@@ -1,25 +1,59 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
 
+
+const courses = [
+  {
+    id: 1,
+    name: "Html, Css",
+  },
+  {
+    id: 2,
+    name: "ReactJs",
+  },
+  {
+    id: 3,
+    name: "PHP",
+  },
+]
+
 function App() {
+
+  //input
+  // const [name, setName] = useState('')
+  // const [email, setEmail] = useState('')
+
+  // function handleSubmit() {
+  //   console.log(
+  //     {
+  //       name: name,
+  //       email: email
+  //     }
+  //   );
+  // }
+
+
+  const [check, setCheck] = useState(1);
+
+
   return (
+
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        {
+          courses.map(course => (
+            <div key={course.id}>
+              <input 
+                type='radio'
+                checked={check === course.id}
+                onChange={() => setCheck(course.id)}
+              />
+              {course.name}
+            </div>
+          ))
+        }
     </div>
   );
+
 }
 
 export default App;
